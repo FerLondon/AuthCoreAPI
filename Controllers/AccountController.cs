@@ -33,7 +33,6 @@ namespace ApiWithRoles.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] Register model)
         {
-
             var user = new IdentityUser { UserName = model.Username };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
@@ -62,7 +61,6 @@ namespace ApiWithRoles.Controllers
                 // Safely parse configuration values
                 var issuer = _configuration["Jwt:Issuer"];
                 var key = _configuration["Jwt:Key"];
-                //var audience = _configuration["Jwt:Audience"];
 
                 if (!double.TryParse(_configuration["Jwt:ExpireMinutes"], out var expireMinutes))
                 {
